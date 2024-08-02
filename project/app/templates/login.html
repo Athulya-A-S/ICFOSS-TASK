@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <script src="{% static '/js/script.js' %}"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="first-col">
+            <img class="first-col-image" src="{% static '/img/img.jpg' %}" alt="robot">
+        </div>
+        <div class="second-col">
+            <p class="errormessage" id="errorMsg"></p>
+            <div class="welcome-container">
+                <p>Welcome</p>
+            </div>
+            <div class="form-parent-container">
+                <form class="form-container" method="post">
+                    {% csrf_token %}
+                    <div>
+                        <label for="username">Username</label>
+                        <input id="username" type="text" placeholder="Username" name="username" class="textfield" required>
+                    </div>
+                    <div>
+                        <label for="password">Password</label>
+                        <input id="password" type="password" placeholder="Password" name="password" class="textfield" required>
+                    </div>
+                    <div>
+                        <button class="submit-button" type="submit" value="submit">Submit</button>
+                        <p class="not-registered-text">Not registered? <a href="{% url 'register' %}">Register now</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
